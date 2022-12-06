@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 ''' *** *** '''
 from flask import Flask
-import storage from models
-import app_views from api.v1.views
+from models import storage
+from api.v1.views import app_views
 from os import getenv
 
 
@@ -23,3 +23,4 @@ if __name__ == "__main__":
     if not port:
         port = '5000'
     app.run(host=host, port=port, threaded=True)
+    
