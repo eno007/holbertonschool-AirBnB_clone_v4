@@ -14,13 +14,17 @@ def close(self):
     ''' *** *** '''
     storage.close()
 
+
+@app.errorhandler(404)
+def not_found(error):
+    ''' *** *** '''
+    return make_response(jsonify({"error": "Not found"}), 404)
+
+
 if __name__ == "__main__":
-    """ Main Function """
-    host = getenv('HBNB_API_HOST')
-    port = getenv('HBNB_API_PORT')
-    if not host:
-        host = '0.0.0.0'
-    if not port:
-        port = '5000'
-    app.run(host=host, port=port, threaded=True)
+    ''' *** *** '''
+    
+    env_host = getenv('HBNB_API_HOST', '0.0.0.0')
+    env_port = getenv('HBNB_API_PORT', 5000)
+    app.run(host=env_host, port=env_port, threaded=True)
     
