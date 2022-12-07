@@ -2,9 +2,17 @@
 ''' *** *** '''
 from api.v1.views import app_views
 from flask import Flask, jsonify
+from models.user import User
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models import storage
 
 
-@app_views.route('/status', methods=['GET'], strict_slashes=False)
+
+@app_views.route('/status', strict_slashes=False)
 def status():
     """ Status of API """
     return jsonify({"status": "OK"})
