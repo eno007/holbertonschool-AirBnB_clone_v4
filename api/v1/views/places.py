@@ -20,6 +20,7 @@ def get_places(city_id):
         places.append(place.to_dict())
     return jsonify(places)
 
+
 @app_views.route('/places/<string:place_id>', methods=['GET'],
                  strict_slashes=False)
 def get_place(place_id):
@@ -28,6 +29,7 @@ def get_place(place_id):
     if place is None:
         abort(404)
     return jsonify(place.to_dict())
+
 
 @app_views.route('/places/<string:place_id>', methods=['DELETE'],
                  strict_slashes=False)
@@ -39,6 +41,7 @@ def delete_place(place_id):
     place.delete()
     storage.save()
     return (jsonify({}))
+
 
 @app_views.route('/cities/<string:city_id>/places', methods=['POST'],
                  strict_slashes=False)
@@ -62,6 +65,7 @@ def post_place(city_id):
     place.save()
     return make_response(jsonify(place.to_dict()), 201)
 
+
 @app_views.route('/places/<string:place_id>', methods=['PUT'],
                  strict_slashes=False)
 def put_place(place_id):
@@ -77,6 +81,7 @@ def put_place(place_id):
             setattr(place, attr, val)
     place.save()
     return jsonify(place.to_dict())
+
 
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
 def post_places_search():

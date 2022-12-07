@@ -5,6 +5,7 @@ from models import storage
 from models.amenity import Amenity
 from flask import jsonify, make_response, request, abort
 
+
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
 def get_amenities():
     """get amenity information for all amenities"""

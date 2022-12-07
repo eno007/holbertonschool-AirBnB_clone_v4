@@ -14,6 +14,7 @@ def get_users():
         users.append(user.to_dict())
     return jsonify(users)
 
+
 @app_views.route('/users/<string:user_id>', methods=['GET'],
                  strict_slashes=False)
 def get_user(user_id):
@@ -22,6 +23,7 @@ def get_user(user_id):
     if user is None:
         abort(404)
     return jsonify(user.to_dict())
+
 
 @app_views.route('/users/<string:user_id>', methods=['DELETE'],
                  strict_slashes=False)
@@ -33,6 +35,7 @@ def delete_user(user_id):
     user.delete()
     storage.save()
     return (jsonify({}))
+
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def post_user():
@@ -46,6 +49,7 @@ def post_user():
     user = User(**request.get_json())
     user.save()
     return make_response(jsonify(user.to_dict()), 201)
+
 
 @app_views.route('/users/<string:user_id>', methods=['PUT'],
                  strict_slashes=False)
