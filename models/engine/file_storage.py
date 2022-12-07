@@ -78,7 +78,6 @@ class FileStorage:
                     return value
         return None
 
-
     def count(self, cls=None):
         """ *** """
         return len(self.all(cls))
